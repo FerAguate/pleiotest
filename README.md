@@ -6,7 +6,7 @@ date: "7/15/2020"
 
 pleiotest is a package that provides tools for detecting genetic associations with multiple traits (i.e. pleiotropy).
 
-It performs a multi-trait genome-wide association analysis with seemingly unrelated regressions based on generalized least squares (GLS). Results from this model are then used to run a sequential Wald test with some considerations to formally test for pleiotropic effects. 
+It performs a multi-trait genome-wide association analysis based on seemingly unrelated regressions. Results from this model are then used to run a sequential Wald test with some considerations to formally test for pleiotropic effects. 
 The package offers some computational advantages that allows it to handle large and unbalanced data sets. In addition, it has functions and arguments to include covariates, subset the data, save the results or plot them.
 
 
