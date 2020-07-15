@@ -1,0 +1,3 @@
+useDynLib(pleiotest, .registration=TRUE)
+exportPattern("^[[:alpha:]]+")
+importFrom(Rcpp, evalCpp)

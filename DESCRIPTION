@@ -1,0 +1,13 @@
+Package: pleiotest
+Type: Package
+Title: Sequential Pleiotropy Test
+Version: 0.1.0
+Author: Fernando Aguate, Ben Smith & Gustavo de los Campos
+Maintainer: Fernando Aguate <fmaguate@gmail.com>
+Description: This package performs a sequential test of pleiotropic effects on unbalanced individual-level genotype-phenotype data.
+License: GPL (>= 2)
+Encoding: UTF-8
+Imports: Rcpp (>= 1.0.2)
+LinkingTo: Rcpp, RcppArmadillo
+LazyData: true
+RoxygenNote: 7.1.1
