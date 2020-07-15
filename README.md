@@ -9,8 +9,9 @@ The package offers some computational advantages that allows it to handle large 
 Examples
 --------
 
-Load the pleiotest package:
+## pleiotest package:
 
+Load the pleiotest package
 ```R
 library(pleiotest)
 ```
@@ -39,7 +40,7 @@ library(reshape2)
 pheno_m <- melt(pheno)
 ```
 
-Run the analysis with pleioR
+## Analysis with pleioR
 
 ```R
 pleio_object <- pleioR(pheno = pheno_m, geno = geno)
@@ -56,7 +57,7 @@ head(mt_result$tac)
 ## rsid6     0.48515 10000  0.034642742 0.01431770  2.4195741 0.01555642
 ```
 
-Sequential test for pleiotropy
+## Sequential test for pleiotropy
 
 ```R
 pleio_results <- pleio_test(pleio_object)
@@ -172,15 +173,19 @@ head(pleio_result4$pValues)
 ## rsid6 0.33845817 0.5378474 0.5188060
 ```
 
-Plotting the results of pleio_test using base pair positions
+## Plot results
 
+Plotting the results of pleio_test using base pair and centromeres positions
+
+Create fake base pair positions and centromeres positions
 ```R
-# Fake base pair positions and centromeres positions
 bp_positions <- data.frame('chr' = rep(1:22, length.out = nrow(pleio_result4[[1]])), 
                            'pos' = seq(1, 1e8, length.out = nrow(pleio_result4[[1]])), 
                            row.names = rownames(pleio_result4[[1]]))
 centromeres = aggregate(pos ~ chr, data = bp_positions, FUN = function(x) mean(x) / 1e6)
+```
 
+```R
 # The function pleio_plot also returns a table with the significant SNPs
 pleio_plot(pleio_res = pleio_result4, n_traits = 2, alpha = .05, bp_positions = bp_positions, chr_spacing = 1000)
 ##              p_value index chr         bp
