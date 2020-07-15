@@ -1,8 +1,7 @@
----
-title: "pleiotest package: Sequential test for detecting genetic pleiotropy"
-author: "Fernando Aguate"
-date: "7/15/2020"
----
+title: ## Pleiotest package: Sequential test for detecting genetic pleiotropy
+author: Fernando Aguate
+date: 7/15/2020
+
 
 pleiotest is a package that provides tools for detecting genetic associations with multiple traits (i.e. pleiotropy).
 
