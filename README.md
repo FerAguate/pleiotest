@@ -92,7 +92,7 @@ pleio_results$traits
 ## "tic" "tac" "toe"
 ```
 
-It's possible to indexing SNPs and individuals in geno (useful when running in parallel)
+It's possible indexing SNPs and individuals in geno (useful when running in parallel)
 
 ```R
 # Here we index 2 SNPs and 50% of individuals in geno
