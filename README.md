@@ -144,7 +144,7 @@ Fit the model with unbalanced data
 ```R
 # It's possible to drop sub-sets with less than x observations (drop_subsets = x)
 pleio_object3 <- pleioR(pheno = pheno_m2, geno = geno, drop_subsets = 200)
-# to save computation time, stop the sequence for p-values larger than loop_breaker
+# to save computation time, stop the sequence for p-values larger than loop_breaker (useful when there are many traits or big data)
 system.time({pleio_result3 <- pleio_test(pleio_object3, loop_breaker = .99)})
 ##    user  system elapsed 
 ##   0.095   0.009   0.194
@@ -153,7 +153,7 @@ system.time({pleio_result3 <- pleio_test(pleio_object3, loop_breaker = .05)})
 ##   0.069   0.006   0.108
 system.time({pleio_result3 <- pleio_test(pleio_object3, loop_breaker = .01)})
 ##    user  system elapsed 
-##   0.078   0.008   0.171
+##   0.068   0.005   0.101
 ```
 
 It's also possible to add covariates (optional)
