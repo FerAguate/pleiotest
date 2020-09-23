@@ -19,6 +19,12 @@ pleio_ideogram(
   ...
 )
 }
+\seealso{
+\code{\link[pleio_plot]{pleio_plot}}
+}
+\author{
+Original code by Fernando Aguate.
+}
 \arguments{
 \item{pleio_res}{Object of class list that results of function pleio_test.}
 
@@ -39,10 +45,4 @@ pleio_ideogram(
 \item{set_legend}{(default TRUE) plot legend.}
 
 \item{set_ylim_prop}{(default = 1) proportion of upper margin to fit the legend, 1 = no margin, 1.1 = 10% left for margin}
-}
-\seealso{
-\code{\link[pleio_plot]{pleio_plot}}
-}
-\author{
-Original code by Fernando Aguate.
 }
