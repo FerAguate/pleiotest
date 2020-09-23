@@ -24,7 +24,7 @@ pleio_ideogram(
 
 \item{alpha}{either 'bonferroni05' or a numeric threshold for significance level.}
 
-\item{n_traits}{integer indicating the number of traits to be tested (not needed if type = 't').}
+\item{n_traits}{integer indicating the number of traits to be tested \(not needed if type = 't').}
 
 \item{bp_positions}{a data frame with column names 'chr' and 'pos' indicating the chromosome and position for each SNP. Row names must contain SNP names matching results from pleio_test.}
 
@@ -38,7 +38,7 @@ pleio_ideogram(
 
 \item{set_legend}{(default TRUE) plot legend.}
 
-\item{set_ylim_prop}{(default = 1) proportion of upper margin to fit the legend, 1 = no margin, 1.1 = 10% left for margin}
+\item{set_ylim_prop}{(default = 1) proportion of upper margin to fit the legend, 1 = no margin, 1.1 = 10 left for margin}
 }
 \seealso{
 \code{\link[pleio_plot]{pleio_plot}}
