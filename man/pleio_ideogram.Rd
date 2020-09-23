@@ -3,6 +3,7 @@
 \name{pleio_ideogram}
 \alias{pleio_ideogram}
 \title{Plot ideogram from pleio_test results}
+\description{Plots the p-values or number of hits with the positions in the genome using results of pleio_test.}
 \usage{
 pleio_ideogram(
   pleio_res,
@@ -38,9 +39,6 @@ pleio_ideogram(
 \item{set_legend}{(default TRUE) plot legend.}
 
 \item{set_ylim_prop}{(default = 1) proportion of upper margin to fit the legend, 1 = no margin, 1.1 = 10% left for margin}
-}
-\description{
-Plots the p-values or number of hits with the positions in the genome using results of pleio_test.
 }
 \seealso{
 \code{\link[pleio_plot]{pleio_plot}}
