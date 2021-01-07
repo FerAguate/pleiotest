@@ -16,7 +16,7 @@ Load the pleiotest package
 library(pleiotest)
 ```
 
-This code creates fake balanced data to use as an example
+This code creates a toy example of balanced data to test the functions
 
 ```R
 # Set seed to obtain consistent results
