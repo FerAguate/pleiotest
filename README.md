@@ -6,6 +6,12 @@ pleiotest is a package that provides tools for detecting genetic associations wi
 It performs a multi-trait genome-wide association analysis based on seemingly unrelated regressions. Results from this model are then used to run a sequential Wald test with some considerations to formally test for pleiotropic effects. 
 The package offers some computational advantages that allows it to handle large and unbalanced data sets. In addition, it has functions and arguments to include covariates, subset the data, save the results or plot them.
 
+**Figure 1** shows a schematic view of how the package is structured and how inputs, functions, and outputs are linked to each other on a conceptual pipeline. The main function pleioR() takes as input the phenotype (pheno) and genotype (geno) data, and possibly covariates (covariates). The results are returned in a list of class pleio_class. The pheno data consists of a dataframe that has IDs, traits, and observations arranged in columns. The geno data can be a numeric matrix or a memory-mapped matrix (e.g., a BEDMatrix object), with ID names in rows matching those in pheno. The package allows performing computations using subsets of the rows and columns in geno (see arguments i and j, for specifying rows and columns, respectively).
+The results produced by pleioR() can be processed either by the mt_gwas() function, which returns trait-specific SNP-effect estimates, SE, and p-values from the multi-trait model; or by the pleio_test() function, which performs the sequential test for pleiotropy using Wald's test, and returns its p-values indicating which traits are associated with a particular variant. Finally, the functions pleio_plot() and pleio_ideogram() can be used to plot the results of pleio_test() with many arguments dedicated to fine-tuning.
+
+![GitHub Logo](/images/Picture0.png)
+Figure 1. Overview of the main functions of pleiotest.
+
 Examples
 --------
 
