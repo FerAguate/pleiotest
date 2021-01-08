@@ -10,7 +10,7 @@ The package offers some computational advantages that allows it to handle large 
 The results produced by pleioR() can be processed either by the mt_gwas() function, which returns trait-specific SNP-effect estimates, SE, and p-values from the multi-trait model; or by the pleio_test() function, which performs the sequential test for pleiotropy using Wald's test, and returns its p-values indicating which traits are associated with a particular variant. Finally, the functions pleio_plot() and pleio_ideogram() can be used to plot the results of pleio_test() with many arguments dedicated to fine-tuning.
 
 ![GitHub Logo](/images/Picture0.png)
-Figure 1. Overview of the main functions of pleiotest.
+**Figure 1.** Overview of the main functions of pleiotest.
 
 Examples
 --------
@@ -33,9 +33,9 @@ n_individuals <- 10000
 n_snps <- 5000
 # Create pheno numeric matrix with traits in columns
 pheno <- matrix(rnorm(n_traits * n_individuals), ncol = n_traits)
-# Set fake names for the fake traits
+# Set names for the toy traits
 colnames(pheno) <- c('tic', 'tac', 'toe')
-# Creeate geno numeric matrix with SNPs in columns
+# Create geno numeric matrix with SNPs in columns
 geno <- sapply(1:n_snps, function(i) rbinom(n_individuals, 2, runif(1, 0.01, .49)))
 # the row names of geno and pheno must be matching IDs
 rownames(geno) <- rownames(pheno) <- paste0('ind', 1:n_individuals)
@@ -52,7 +52,7 @@ pheno_m <- melt(pheno)
 pleio_object <- pleioR(pheno = pheno_m, geno = geno)
 # To obtain by trait estimates of the multi-trait GWAS use mt_gwas
 mt_result <- mt_gwas(pleio_object)
-# head of the table with results for the 2nd trait with fake name "tac"
+# head of the table with results for the 2nd trait named "tac"
 head(mt_result$tac)
 ##       allele_freq     n     estimate         se    t value    p value
 ## rsid1     0.15385 10000  0.025388923 0.01987082  1.2776991 0.20138522
@@ -183,7 +183,7 @@ head(pleio_result4$pValues)
 
 Plotting the results of pleio_test using base pair and centromeres positions
 
-Create fake base pair positions and centromeres positions
+Create toy base pair positions and centromere positions
 ```R
 bp_positions <- data.frame('chr' = rep(1:22, length.out = nrow(pleio_result4[[1]])), 
                            'pos' = seq(1, 1e8, length.out = nrow(pleio_result4[[1]])), 
