@@ -17,6 +17,11 @@ Examples
 
 ## pleiotest package:
 
+Install package from github
+```R
+devtools::install_github('https://github.com/FerAguate/pleiotest')
+```
+
 Load the pleiotest package
 ```R
 library(pleiotest)
