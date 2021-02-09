@@ -6,6 +6,7 @@
 #' @param j vector with integers indicating columns from geno to use in the model.
 #' @param covariates (optional) a data frame or matrix containing covariates in columns and with IDs matching those in geno.
 #' @param drop_subsets minimum sub-set sample size to consider for analysis.
+#' @author Fernando M. Aguate (fmaguate@gmail.com)
 #'
 pleioR <- function(pheno, geno, i = NULL, j = NULL, covariates = NULL, drop_subsets = 10){
 
