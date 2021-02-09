@@ -86,8 +86,7 @@ pleioR <- function(pheno, geno, i = NULL, j = NULL, covariates = NULL, drop_subs
     }
   }
 
-  sets_which_trait <- lapply(sets_y, function(col_i)
-    which(colnames(id_matrix) %in% colnames(col_i)))
+  sets_which_trait <- lapply(sets_y, function(col_i) match(colnames(col_i), colnames(id_matrix)))
 
   pleio_res <- list()
 
