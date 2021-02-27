@@ -166,8 +166,7 @@ pleio_ideogram <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_p
     # Add centromeres
     if (!is.null(centromeres)){
       if (is.character(centromeres)){
-        if (centromeres == 'human') load(system.file("extdata", "human_centromeres.rda", package = "pleiotest"))
-        data_c <- human_centromeres
+        data_c <- human_centromeres # from R/sysdata.rda
       } else {
         data_c <- centromeres
       }
