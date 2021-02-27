@@ -111,27 +111,27 @@ pleio_plot <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_posit
 
     if (!is.null(bp_positions)){
       if(length(unique(chr_pos[,1])) > 1){
-        x_axis <- aggregate(chr_pos[,2] ~ chr_pos[,1], FUN = function(x) round(mean(x)))
-        axis(1, x_axis[,2], x_axis[,1])
+        x_axis <- stats::aggregate(chr_pos[,2] ~ chr_pos[,1], FUN = function(x) round(mean(x)))
+        graphics::axis(1, x_axis[,2], x_axis[,1])
         end <- cumsum(rle(chr_pos[,1])$lengths)
         start <- c(1, end[-length(end)] + 1)
         for (i in which(1:length(end) %% 2 == 1))
-          rect(chr_pos[start[i], 2], -15, chr_pos[end[i], 2], 325, col = 'grey88', border = NA)
-        points(chr_pos[, 2], -log10(p_values), col = my_colors, cex = .5)
+          graphics::rect(chr_pos[start[i], 2], -15, chr_pos[end[i], 2], 325, col = 'grey88', border = NA)
+        graphics::points(chr_pos[, 2], -log10(p_values), col = my_colors, cex = .5)
       } else {
-        axis(1, at = which(p_significant), labels = which(p_significant))
-        points(1:length(p_values), -log10(p_values), col = my_colors, cex = .5)
+        graphics::axis(1, at = which(p_significant), labels = which(p_significant))
+        graphics::points(1:length(p_values), -log10(p_values), col = my_colors, cex = .5)
       }
     } else {
-      axis(1, at = which(p_significant), labels = which(p_significant))
-      points(1:length(p_values), -log10(p_values), col = my_colors, cex = .5)
+      graphics::axis(1, at = which(p_significant), labels = which(p_significant))
+      graphics::points(1:length(p_values), -log10(p_values), col = my_colors, cex = .5)
     }
 
-    abline(h = -log10(alpha), lty = 2)
+    graphics::abline(h = -log10(alpha), lty = 2)
 
     if (!is.null(set_text)){
       pos_Text <- match(rownames(set_text), names(p_values))
-      text(pos_Text, -log10(p_values[pos_Text]), labels = set_text[,1])
+      graphics::text(pos_Text, -log10(p_values[pos_Text]), labels = set_text[,1])
     }
   }
   w_sig <- unname(which(p_significant))

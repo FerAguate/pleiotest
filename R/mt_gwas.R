@@ -27,7 +27,7 @@ mt_gwas <- function(pleio_results, save_at = NULL){
 
   result_list <- list()
   for (j in 1:n_traits){
-    result_list[[j]] <- cbind(allele_freq, n, estimate[,j], s_error[,j], t_stat[,j], pt(q = abs(t_stat[,j]), df = n - 2, lower.tail = F) * 2)
+    result_list[[j]] <- cbind(allele_freq, n, estimate[,j], s_error[,j], t_stat[,j], stats::pt(q = abs(t_stat[,j]), df = n - 2, lower.tail = F) * 2)
     colnames(result_list[[j]]) <- c('allele_freq', 'n', "estimate", "se", "t value", "p value")
     rownames(result_list[[j]]) <- names(pleio_results)
   }

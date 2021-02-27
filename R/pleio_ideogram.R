@@ -114,9 +114,9 @@ pleio_ideogram <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_p
     ylims <- c(0, max(data1$pos / 1e6) * set_ylim_prop)
 
     plot(1, type = "n", xlab = "Chromosome", ylab = "Positions (Mbp)", xlim = xlims, ylim = ylims, bty = "n", xaxt = 'n', ...)
-    axis(1, seq(xlims[1],xlims[2], 1))
+    graphics::axis(1, seq(xlims[1],xlims[2], 1))
     viridis <- c('#440154FF', '#482677FF', '#404788FF', '#33638DFF', '#287D8EFF', '#1F968BFF', '#29AF7FFF', '#55C667FF', '#95D840FF', '#DCE319FF', '#FDE725FF')
-    colfunc <- colorRampPalette(viridis, bias = color_bias)
+    colfunc <- grDevices::colorRampPalette(viridis, bias = color_bias)
 
     colors <- factor(windows$min_pval)
     levels(colors) <- rev(colfunc(length(levels(colors))))
@@ -124,14 +124,14 @@ pleio_ideogram <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_p
     # traits shapes
     pchs <- rep(15:18, length.out = total_n_traits)
     # traits colors
-    trait_cols <- rep(brewer.pal(total_n_traits, 'Dark2'), length.out = total_n_traits)
+    trait_cols <- rep(RColorBrewer::brewer.pal(total_n_traits, 'Dark2'), length.out = total_n_traits)
     bar_distance <- 0.2
 
     # notch
     notch_fun <- function(chr, notch_y,  a, ...){
       notch_x <- seq(0, 1, .1)
       notch <- function(x) 1 - (x * a) + (x^2) * abs(a)
-      polygon(c(notch_x, rev(notch_x)) * bar_distance * 2 + (chr - bar_distance),
+      graphics::polygon(c(notch_x, rev(notch_x)) * bar_distance * 2 + (chr - bar_distance),
               c(notch(notch_x), - notch(notch_x)) + notch_y,
               col = 'white', ...)
     }
@@ -141,25 +141,25 @@ pleio_ideogram <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_p
       x_max <- i + bar_distance
       y_min <- min(data1$pos[data1$chr == i]) / 1e6
       y_max <- max(data1$pos[data1$chr == i]) / 1e6
-      rect(xleft = x_min, ybottom = y_min, xright = x_max, ytop = y_max, col = 'grey', border = NA)
+      graphics::rect(xleft = x_min, ybottom = y_min, xright = x_max, ytop = y_max, col = 'grey', border = NA)
       notch_fun(chr = i, notch_y = y_min, a = 3, border = 'white')
       notch_fun(chr = i, notch_y = y_max, a = 3, border = 'white')
 
       if (!is.null(white_limits[[i]])){
         tmp_lim <- white_limits[[i]] / 1e6
-        rect(xleft = x_min, ybottom = tmp_lim[1], xright = x_max, ytop = tmp_lim[2], col = 'white', border = NA)
+        graphics::rect(xleft = x_min, ybottom = tmp_lim[1], xright = x_max, ytop = tmp_lim[2], col = 'white', border = NA)
         notch_fun(chr = i, notch_y = tmp_lim[1], a = 3, border = 'white')
         notch_fun(chr = i, notch_y = tmp_lim[2], a = 3, border = 'white')
       }
       win_i <- windows[windows$chr == i,]
       if(nrow(win_i) > 0){
         for (j in 1:nrow(win_i)){
-          rect(xleft = x_min, ybottom = win_i$lower[j], xright = x_max, ytop = win_i$upper[j], col = win_i$colors[j], border = NA)
+          graphics::rect(xleft = x_min, ybottom = win_i$lower[j], xright = x_max, ytop = win_i$upper[j], col = win_i$colors[j], border = NA)
           traits_i <- as.numeric(unlist(strsplit(win_i[j, 'traits'], "_")))
           traits_x_pos <- seq(x_max, x_min + 1, length.out = length(traits_i) + 2)
           traits_x_pos <- traits_x_pos[c(-1, -length(traits_x_pos))]
           for (w in traits_i) {
-            points(traits_x_pos[traits_i == w], mean(c(win_i$lower[j], win_i$upper[j])), col = trait_cols[w], pch = pchs[w], cex = .6)
+            graphics::points(traits_x_pos[traits_i == w], mean(c(win_i$lower[j], win_i$upper[j])), col = trait_cols[w], pch = pchs[w], cex = .6)
           }
         }
       }
@@ -172,7 +172,7 @@ pleio_ideogram <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_p
         data_c <- centromeres
       }
       for (i in unique(data1$chr)) notch_fun(chr = data_c[i,1], notch_y = data_c[i,2], a = 3, border = 'white')
-      for (i in unique(data1$chr)) points(data_c[i,1], data_c[i,2], pch = 1, cex = 0.7, col = 'red')
+      for (i in unique(data1$chr)) graphics::points(data_c[i,1], data_c[i,2], pch = 1, cex = 0.7, col = 'red')
     }
 
     if(set_legend){
@@ -180,9 +180,9 @@ pleio_ideogram <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_p
     leg_x_pos <- seq(xlims[2] - total_n_traits, xlims[2] - 1, by = 1)
     leg_y_pos <- rep(ylims[2], length(leg_x_pos))
 
-    points(leg_x_pos, leg_y_pos, pch = pchs, col = trait_cols)
-    text(leg_x_pos, leg_y_pos - leg_y_pos * .05, labels = seq_len(total_n_traits), cex = .9)
-    text(min(leg_x_pos) - 1, leg_y_pos[1], labels = 'Traits:', cex = .9)
+    graphics::points(leg_x_pos, leg_y_pos, pch = pchs, col = trait_cols)
+    graphics::text(leg_x_pos, leg_y_pos - leg_y_pos * .05, labels = seq_len(total_n_traits), cex = .9)
+    graphics::text(min(leg_x_pos) - 1, leg_y_pos[1], labels = 'Traits:', cex = .9)
 
     # scale
     scale_range <- range(leg_x_pos)
@@ -195,7 +195,7 @@ pleio_ideogram <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_p
 
     window_size_mb <- window_size / 1e6
 
-    text(scale_range[1] - 1, scale_y_pos + window_size_mb * 1.5, labels = '-log10(p):', cex = .9)
+    graphics::text(scale_range[1] - 1, scale_y_pos + window_size_mb * 1.5, labels = '-log10(p):', cex = .9)
 
     scale_x_pos <- seq(scale_range[1], scale_range[2], length.out = nrow(scale_df) + 1)
     scale_x_by <- scale_x_pos[2] - scale_x_pos[1]
@@ -209,18 +209,18 @@ pleio_ideogram <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_p
 
     pol_height <- ylims[2] / 30
 
-    polygon(c(0, scale_x_by, scale_x_by, 0) + scale_x_pos[1],
+    graphics::polygon(c(0, scale_x_by, scale_x_by, 0) + scale_x_pos[1],
             c(0, 0, pol_height, pol_height) + scale_y_pos,
             col = 'grey', border = NA)
 
-    text(scale_x_pos[1] + (scale_x_by / 2), scale_y_pos - pol_height * 1.4,
+    graphics::text(scale_x_pos[1] + (scale_x_by / 2), scale_y_pos - pol_height * 1.4,
          labels = paste0('<', round(-log10(alpha))), cex = .7)
 
     for (i in 1:nrow(scale_df) + 1){
-      polygon(c(0, scale_x_by, scale_x_by, 0) + scale_x_pos[i],
+      graphics::polygon(c(0, scale_x_by, scale_x_by, 0) + scale_x_pos[i],
               c(0, 0, pol_height, pol_height) + scale_y_pos, col = scale_df$colors[i - 1], border = NA)
       if(scale_text_bool[i])
-        text(scale_x_pos[i] + (scale_x_by / 2),
+        graphics::text(scale_x_pos[i] + (scale_x_by / 2),
              scale_y_pos - pol_height * 1.4, labels = scale_df$leg[i - 1], cex = .7)
     }
     }
