@@ -3,7 +3,14 @@
 #' @param pleio_results pleio_class object returned by pleioR().
 #' @param loop_breaker numeric value for a maximum p-value used to stop the sequence if a higher p-value is obtained. This saves computation time if there are many tests to perform.
 #' @param save_at character with directory and/or file name (.rdata) to save the results. This is useful when handling multiple results such as in parallel jobs.
-#' @param contrast_matrices user specified contrast matrices within a list. Each matrix must have the same number of columns equal to the number of traits. Contrast matrices can have names.
+#' @param contrast_matrices user-specified contrast matrices within a list of lists, or a single contrast matrix (see example). Each matrix must have the same number of columns, and must be equal to the number of traits.
+#' @examples
+#' # Example of user-specified contrast matrices with 3 traits
+#' cm1 <- matrix(c(-1, 0, 1), ncol = 3)
+#' cm2 <- matrix(c(0, -1, 1), ncol = 3)
+#' contrast_matrices <- list('1vs3' = list(cm1), '2vs3' = list(cm2))
+#' # or a single contrast matrix as:
+#' contrast_matrices <- cm1
 pleio_test <- function(pleio_results, loop_breaker = 1, save_at = NULL, contrast_matrices = NULL){
   if (!'pleio_class' %in% class(pleio_results))
     stop('pleio_results should be a pleio_class object')
@@ -17,16 +24,14 @@ pleio_test <- function(pleio_results, loop_breaker = 1, save_at = NULL, contrast
   contrast_matrices <- c(list(list(diag(n_traits))), lapply(indices, function(x)
     lapply(as.data.frame(x), function(w)
       diag(n_traits)[-w, , drop = F])))
-
   contrast_matrices_indices <- lapply(contrast_matrices[-1], function(x)
     lapply(x, function(w)
       paste(which(colSums(w) == 0), collapse = '_')))
   } else {
+    if (class(contrast_matrices)[1] == 'matrix') contrast_matrices <- list('Contrast' = list(contrast_matrices))
     contrast_matrices_indices <- list(as.list(names(contrast_matrices)))
-    contrast_matrices <- list(contrast_matrices)
   }
   tests_res <- PleioSeqTestc(pleio_results, contrast_matrices, contrast_matrices_indices, loop_breaker)
-
   p_values_res <- do.call(rbind, lapply(tests_res, function(x) t(x$pValues)))
   indices_res <- as.data.frame(do.call(rbind, lapply(tests_res, function(x) t(x$index))))
 
@@ -38,6 +43,10 @@ pleio_test <- function(pleio_results, loop_breaker = 1, save_at = NULL, contrast
   names(traits_names) <- 1:length(traits_names)
 
   tests_res <- list('pValues' = p_values_res, 'Index' = indices_res[, -ncol(indices_res)], 'traits' = traits_names)
+  if (!is.null(contrast_matrices)) {
+    colnames(p_values_res) <- names(contrast_matrices)
+    tests_res <- list('pValues' = p_values_res)
+  }
 
   if (!is.null(save_at)){
     if(!is.character(save_at))
