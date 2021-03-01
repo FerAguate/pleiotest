@@ -6,15 +6,6 @@
 \usage{
 xrsx_xrsy(id_matrix, sets_rs, xx, xy)
 }
-\arguments{
-\item{id_matrix}{matrix of IDs}
-
-\item{sets_rs}{list of inverses of matrix R}
-
-\item{xx}{numeric vector with crossproducts of the X matrix}
-
-\item{xy}{matrix with X transpose Y products.}
-}
 \description{
-internal function to calculate crossproducts within pleioR.
+internal function to calculate needed crossproducts within pleioR.
 }

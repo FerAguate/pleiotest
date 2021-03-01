@@ -1,10 +1,11 @@
 #' @title Sequential Wald test for pleiotropy
-#' @description Performs the sequential test of pleiotropic effects using results of pleioR().
-#' @param pleio_results pleio_class object returned by pleioR().
-#' @param loop_breaker numeric value for a maximum p-value used to stop the sequence if a higher p-value is obtained. This saves computation time if there are many tests to perform.
-#' @param save_at character with directory and/or file name (.rdata) to save the results. This is useful when handling multiple results such as in parallel jobs.
-#' @param contrast_matrices user specified contrast matrices within a list. Each matrix must have the same number of columns equal to the number of traits. Contrast matrices can have names.
-pleio_test <- function(pleio_results, loop_breaker = 1, save_at = NULL, contrast_matrices = NULL){
+#' @description Performs the sequential test to test pleiotropic effects from results of pleioR.
+#' @param pleio_results object of class pleio_class (see function pleioR).
+#' @param loop_breaker A numerical value for a maximum p-value used to stop the sequence if they pass this threshold.
+#' @param save_at string with directory and/or file name (.rdata) to save the results.
+#' @author Original code by Fernando Aguate.
+#'
+pleio_test <- function(pleio_results, loop_breaker = 0.99, save_at = NULL){
   if (!'pleio_class' %in% class(pleio_results))
     stop('pleio_results should be a pleio_class object')
 
@@ -14,7 +15,6 @@ pleio_test <- function(pleio_results, loop_breaker = 1, save_at = NULL, contrast
   for (i in 1:(n_traits - 1))
     indices[[length(indices) + 1]] <- combn(n_traits, i)
 
-  if (is.null(contrast_matrices)) {
   contrast_matrices <- c(list(list(diag(n_traits))), lapply(indices, function(x)
     lapply(as.data.frame(x), function(w)
       diag(n_traits)[-w, , drop = F])))
@@ -22,9 +22,7 @@ pleio_test <- function(pleio_results, loop_breaker = 1, save_at = NULL, contrast
   contrast_matrices_indices <- lapply(contrast_matrices[-1], function(x)
     lapply(x, function(w)
       paste(which(colSums(w) == 0), collapse = '_')))
-  } else {
 
-  }
   tests_res <- PleioSeqTestc(pleio_results, contrast_matrices, contrast_matrices_indices, loop_breaker)
 
   p_values_res <- do.call(rbind, lapply(tests_res, function(x) t(x$pValues)))
