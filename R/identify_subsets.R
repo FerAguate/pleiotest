@@ -1,7 +1,7 @@
-#' @title Internal function to indetify sub-sets of data and return a list with IDs.
+#' @title Internal function to identify sub-sets of data and return a list with IDs.
 #' @description This function is used internally in pleioR.
-#' @param trait Vector indicating traits.
-#' @param id Vector indicating IDs.
+#' @param trait character indicating traits.
+#' @param id character indicating IDs.
 #' @author Original code by Fernando Aguate.
 #'
 identify_subsets <- function(trait, id){

@@ -1,11 +1,10 @@
 #' @title Sequential Wald test for pleiotropy
-#' @description Performs the sequential test to test pleiotropic effects from results of pleioR.
-#' @param pleio_results object of class pleio_class (see function pleioR).
-#' @param loop_breaker A numerical value for a maximum p-value used to stop the sequence if they pass this threshold.
-#' @param save_at string with directory and/or file name (.rdata) to save the results.
-#' @author Original code by Fernando Aguate.
+#' @description Performs the sequential test of pleiotropic effects using results of pleioR().
+#' @param pleio_results pleio_class object returned by pleioR().
+#' @param loop_breaker numeric value for a maximum p-value used to stop the sequence if a higher p-value is obtained. This saves computation time if there are many tests to perform.
+#' @param save_at character with directory and/or file name (.rdata) to save the results. This is useful when handling multiple results such as in parallel jobs.
 #'
-pleio_test <- function(pleio_results, loop_breaker = 0.99, save_at = NULL){
+pleio_test <- function(pleio_results, loop_breaker = 1, save_at = NULL){
   if (!'pleio_class' %in% class(pleio_results))
     stop('pleio_results should be a pleio_class object')
 

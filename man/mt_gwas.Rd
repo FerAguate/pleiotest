@@ -7,13 +7,10 @@
 mt_gwas(pleio_results, save_at = NULL)
 }
 \arguments{
-\item{pleio_results}{object of class pleio_class (see function pleioR).}
+\item{pleio_results}{object of class pleio_class (returned by pleioR() function).}
 
-\item{save_at}{string with directory and/or file name (.rdata) to save the results.}
+\item{save_at}{character with directory and/or file name (.rdata) to save the results. This is useful when handling multiple results such as in parallel jobs.}
 }
 \description{
-Performs a multi-trait model with correlated errors (seemingly unrelated regressions), and generates results by trait.
-}
-\author{
-Original code by Fernando Aguate.
+Performs a multi-trait model with correlated errors (seemingly unrelated regressions), and generates results by trait in a list.
 }

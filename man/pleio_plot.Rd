@@ -2,7 +2,7 @@
 % Please edit documentation in R/pleio_plot.R
 \name{pleio_plot}
 \alias{pleio_plot}
-\title{Multi-trait manhattan plot}
+\title{Pleiotropic manhattan plot}
 \usage{
 pleio_plot(
   pleio_res,
@@ -17,27 +17,24 @@ pleio_plot(
 )
 }
 \arguments{
-\item{pleio_res}{Object of class list that results of function pleio_test.}
+\item{pleio_res}{object returned by pleio_test().}
 
-\item{alpha}{either 'bonferroni05' or a numeric threshold for significance level.}
+\item{alpha}{numeric threshold for significance level (Bonferroni correction by default).}
 
-\item{n_traits}{number indicating the level of pleiotropy to plot.}
+\item{n_traits}{integer indicating the level of pleiotropy to test (a.k.a. number of traits).}
 
-\item{bp_positions}{dataframe with chromosomes and basepair positions for SNPs matching pleio_res. rownames should contain SNP names.}
+\item{bp_positions}{dataframe with colnames 'chr' and 'pos' indicating the chromosome and position for each SNP. Rownames must contain SNP names matching results of pleio_test.}
 
 \item{set_colors}{string with 3 colors to use in the plot (by default: c('goldenrod4', 'brown4', 'royalblue2')).}
 
-\item{set_text}{dataframe or matrix with text to add for some p-values. Row names should contain SNP names. Only the first column (with strings) will be considered.}
+\item{set_text}{dataframe or matrix with strings to add as text to identify SNPs or genes. Rownames must be SNP names matching results of pleio_test. The first column of the dataframe must have strings to plot as text.}
 
-\item{set_plot}{boolean (TRUE by default) indicating whether to return the manhattan plot.}
+\item{set_plot}{logical indicating whether to return the manhattan plot (TRUE by default).}
 
-\item{chr_spacing}{integer indicating the spacing (in basepair positions) between chromosomes. By default = 1e5.}
+\item{chr_spacing}{integer indicating the spacing (in base pair positions) between chromosomes. 1e5 by default.}
 
-\item{...}{Additional graphic parameters for the plot.}
+\item{...}{additional graphic parameters for the plot.}
 }
 \description{
-Plots the p-values that test the hypothesis of pleiotropic effects on n_traits.
-}
-\author{
-Original code by Fernando Aguate.
+Plots the p-values that test the hypothesis of pleiotropic effects on n_traits. This function also returns a dataframe with information of the significant SNPs.
 }

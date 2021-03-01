@@ -4,18 +4,15 @@
 \alias{pleio_test}
 \title{Sequential Wald test for pleiotropy}
 \usage{
-pleio_test(pleio_results, loop_breaker = 0.99, save_at = NULL)
+pleio_test(pleio_results, loop_breaker = 1, save_at = NULL)
 }
 \arguments{
-\item{pleio_results}{object of class pleio_class (see function pleioR).}
+\item{pleio_results}{pleio_class object returned by pleioR().}
 
-\item{loop_breaker}{A numerical value for a maximum p-value used to stop the sequence if they pass this threshold.}
+\item{loop_breaker}{numeric value for a maximum p-value used to stop the sequence if a higher p-value is obtained. This saves computation time if there are many tests to perform.}
 
-\item{save_at}{string with directory and/or file name (.rdata) to save the results.}
+\item{save_at}{character with directory and/or file name (.rdata) to save the results. This is useful when handling multiple results such as in parallel jobs.}
 }
 \description{
-Performs the sequential test to test pleiotropic effects from results of pleioR.
-}
-\author{
-Original code by Fernando Aguate.
+Performs the sequential test of pleiotropic effects using results of pleioR().
 }
