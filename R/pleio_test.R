@@ -3,8 +3,8 @@
 #' @param pleio_results pleio_class object returned by pleioR().
 #' @param loop_breaker numeric value for a maximum p-value used to stop the sequence if a higher p-value is obtained. This saves computation time if there are many tests to perform.
 #' @param save_at character with directory and/or file name (.rdata) to save the results. This is useful when handling multiple results such as in parallel jobs.
-#'
-pleio_test <- function(pleio_results, loop_breaker = 1, save_at = NULL){
+#' @param contrast_matrices user specified contrast matrices within a list. Each matrix must have the same number of columns equal to the number of traits. Contrast matrices can have names.
+pleio_test <- function(pleio_results, loop_breaker = 1, save_at = NULL, contrast_matrices = NULL){
   if (!'pleio_class' %in% class(pleio_results))
     stop('pleio_results should be a pleio_class object')
 
@@ -14,6 +14,7 @@ pleio_test <- function(pleio_results, loop_breaker = 1, save_at = NULL){
   for (i in 1:(n_traits - 1))
     indices[[length(indices) + 1]] <- combn(n_traits, i)
 
+  if (is.null(contrast_matrices)) {
   contrast_matrices <- c(list(list(diag(n_traits))), lapply(indices, function(x)
     lapply(as.data.frame(x), function(w)
       diag(n_traits)[-w, , drop = F])))
@@ -21,7 +22,9 @@ pleio_test <- function(pleio_results, loop_breaker = 1, save_at = NULL){
   contrast_matrices_indices <- lapply(contrast_matrices[-1], function(x)
     lapply(x, function(w)
       paste(which(colSums(w) == 0), collapse = '_')))
+  } else {
 
+  }
   tests_res <- PleioSeqTestc(pleio_results, contrast_matrices, contrast_matrices_indices, loop_breaker)
 
   p_values_res <- do.call(rbind, lapply(tests_res, function(x) t(x$pValues)))

@@ -4,7 +4,12 @@
 \alias{pleio_test}
 \title{Sequential Wald test for pleiotropy}
 \usage{
-pleio_test(pleio_results, loop_breaker = 1, save_at = NULL)
+pleio_test(
+  pleio_results,
+  loop_breaker = 1,
+  save_at = NULL,
+  contrast_matrices = NULL
+)
 }
 \arguments{
 \item{pleio_results}{pleio_class object returned by pleioR().}
@@ -12,6 +17,8 @@ pleio_test(pleio_results, loop_breaker = 1, save_at = NULL)
 \item{loop_breaker}{numeric value for a maximum p-value used to stop the sequence if a higher p-value is obtained. This saves computation time if there are many tests to perform.}
 
 \item{save_at}{character with directory and/or file name (.rdata) to save the results. This is useful when handling multiple results such as in parallel jobs.}
+
+\item{contrast_matrices}{user specified contrast matrices within a list. Each matrix must have the same number of columns equal to the number of traits. Contrast matrices can have names.}
 }
 \description{
 Performs the sequential test of pleiotropic effects using results of pleioR().
