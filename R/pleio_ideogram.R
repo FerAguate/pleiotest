@@ -1,19 +1,20 @@
 #' @title Plot ideogram from pleio_test results
-#' @description Plots the p-values or number of hits with the positions in the genome using results of pleio_test.
-#' @param pleio_res Object of class list that results of function pleio_test.
-#' @param alpha either 'bonferroni05' or a numeric threshold for significance level.
-#' @param n_traits integer indicating the number of traits to be tested (not needed if type = "t").
-#' @param bp_positions a data frame with column names 'chr' and 'pos' indicating the chromosome and position for each SNP. Row names must contain SNP names matching results from pleio_test.
-#' @param window_size a numeric value indicating the size (in base pairs) of the genomic region that contains significant SNPs.
-#' @param centromeres (default NULL) take string 'human' or a dataframe/matrix with chromosome in the first column and position (in mbp) for the centromere in the second column.
-#' @param color_bias bias for the color scale. See colorRampPalette.
-#' @param set_plot (default TRUE) plot the ideogram.
-#' @param set_legend (default TRUE) plot legend.
-#' @param set_ylim_prop (default = 1) proportion of upper margin to fit the legend, 1 = no margin, 1.1 = 10% left for margin
-#' @author Original code by Fernando Aguate.
+#' @description Plots genomic segments that contain significant pleiotropic SNPs using results of pleio_test(). It also returns a dataframe with segment information.
+#' @param pleio_res list returned by pleio_test().
+#' @param alpha numeric threshold for significance level (Bonferroni correction by default).
+#' @param n_traits integer indicating the level of pleiotropy to test (a.k.a. number of traits).
+#' @param bp_positions dataframe with colnames 'chr' and 'pos' indicating the chromosome and position for each SNP. Rownames must contain SNP names matching results of pleio_test.
+#' @param window_size numeric value indicating the minimum size (in base pairs) of the genomic region that contains significant SNPs.
+#' @param centromeres string 'human' or dataframe (or matrix) with chromosome and position (in mbp) of the centromeres in the first and second columns. If NULL (default) does not plot the centromeres.
+#' @param color_bias number for bias of the color scale. See help(colorRampPalette). By default color_bias = 1
+#' @param set_plot logical indicating whether to plot the ideogram (TRUE by default).
+#' @param set_legend logical indicating whether to plot a legend (TRUE by default).
+#' @param set_ylim_prop numeric proportion of upper margin to fit the legend (no margin by default). 1 = no margin, 1.1 = 10% left for margin, etc.
+#' @param ... more plot arguments.
 #' @seealso \code{\link[pleio_plot]{pleio_plot}}
 
 pleio_ideogram <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_positions, window_size = 1e6, centromeres = NULL, color_bias = 1, set_plot = T, set_legend = T, set_ylim_prop = 1.1, ...){
+  loadNamespace(RColorBrewer)
 
   total_n_traits <- ncol(pleio_res[[1]])
   if (alpha == 'bonferroni05')
@@ -123,7 +124,7 @@ pleio_ideogram <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_p
     # traits shapes
     pchs <- rep(15:18, length.out = total_n_traits)
     # traits colors
-    trait_cols <- rep(RColorBrewer::brewer.pal(total_n_traits, 'Dark2'), length.out = total_n_traits)
+    trait_cols <- rep(brewer.pal(total_n_traits, 'Dark2'), length.out = total_n_traits)
     bar_distance <- 0.2
 
     # notch

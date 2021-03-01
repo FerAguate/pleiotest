@@ -2,14 +2,14 @@
 % Please edit documentation in R/identify_subsets.R
 \name{identify_subsets}
 \alias{identify_subsets}
-\title{Internal function to indetify sub-sets of data and return a list with IDs.}
+\title{Internal function to identify sub-sets of data and return a list with IDs.}
 \usage{
 identify_subsets(trait, id)
 }
 \arguments{
-\item{trait}{Vector indicating traits.}
+\item{trait}{character indicating traits.}
 
-\item{id}{Vector indicating IDs.}
+\item{id}{character indicating IDs.}
 }
 \description{
 This function is used internally in pleioR.

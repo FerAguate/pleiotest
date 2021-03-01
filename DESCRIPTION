@@ -1,13 +1,22 @@
 Package: pleiotest
-Type: Package
-Title: Sequential Pleiotropy Test
-Version: 0.1.0
-Author: Fernando Aguate, Ben Smith & Gustavo de los Campos
-Maintainer: Fernando Aguate <fmaguate@gmail.com>
-Description: This package performs a sequential test of pleiotropic effects on unbalanced individual-level genotype-phenotype data.
-License: GPL (>= 2)
+Title: Fast sequential pleiotropy test
+Version: 1.0
+Authors@R: 
+    person(given = "Fernando",
+           family = "Aguate",
+           role = c("aut", "cre"),
+           email = "fmaguate@gmail.com",
+           comment = c(ORCID = "https://orcid.org/0000-0002-3608-8425"))
+    person(given = "Gustavo",
+           family = "de los Campos",
+           role = c("aut", "cre"),
+           email = "gustavoc@msu.edu",
+           comment = c(ORCID = ""))
+Description: It performs a fast multi-trait genome-wide association analysis based on seemingly unrelated regressions, and performs a test for pleiotropic effects based on a series of Intersection-Union Wald tests. The package offers some computational advantages that allows to handle large and unbalanced data, easy to interpret results, and plots.
+License: MIT + file LICENSE
 Encoding: UTF-8
-Imports: Rcpp (>= 1.0.2)
+Imports: Rcpp
 LinkingTo: Rcpp, RcppArmadillo
 LazyData: true
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1

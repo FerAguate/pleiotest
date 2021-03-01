@@ -1,11 +1,11 @@
-#' @title Fit a multitrait model to test for genetic pleiotropy
-#' @description The main function of the pleiotest package. Fits a seemingly unrelated regression with possible unbalanced data, and covariates. It returns a pleio_class object to use as argument of the pleio_test function.
-#' @param pheno A dataframe with phenotypic data with columns 'id', 'trait', and 'y'. The column 'y' contains the observations for the corresponding trait and id.
-#' @param geno a matrix like object with the variants in columns and IDs in row names.
-#' @param i vector with integers indicating rows from geno to use in the model.
-#' @param j vector with integers indicating columns from geno to use in the model.
-#' @param covariates (optional) a data frame or matrix containing covariates in columns and with IDs matching those in geno.
-#' @param drop_subsets minimum sub-set sample size to consider for analysis.
+#' @title Fit a multi-trait model to test for genetic pleiotropy
+#' @description Fits a seemingly unrelated regression with, possibly unbalanced data, and/or covariates. It returns a pleio_class object to perform the sequential test with pleio_test() or to obtain by-trait estimates with mt_gwas().
+#' @param pheno dataframe with phenotypic data. Must have columns 'id', 'trait', and 'y'. Column 'y' must contain the observations for the corresponding 'trait' and 'id'. See function melt() in the 'reshape2' package for a simple formatting of your data.
+#' @param geno matrix with SNPs in columns and IDs in rownames. This can also be a memory-mapped matrix returned by BEDMatrix() in the 'BEDMatrix' package.
+#' @param i integers indexing rows from geno to use in the model.
+#' @param j integers indexing columns from geno to use in the model. Useful when working with multiple jobs in parallel.
+#' @param covariates (optional) dataframe or matrix containing covariates in columns and IDs as rownames. These IDs must match those in geno.
+#' @param drop_subsets minimum sample size of sub-data sets to consider for analysis, 10 by default. When working with unbalanced data (a.k.a. fragmented data), save computation time by dropping small fragments of data.
 #'
 pleioR <- function(pheno, geno, i = NULL, j = NULL, covariates = NULL, drop_subsets = 10){
 

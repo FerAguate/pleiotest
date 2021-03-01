@@ -1,5 +1,9 @@
 #' @title Calculate XRsX and XRsY
-#' @description internal function to calculate needed crossproducts within pleioR.
+#' @description internal function to calculate crossproducts within pleioR.
+#' @param id_matrix matrix of IDs
+#' @param sets_rs list of inverses of matrix R
+#' @param xx numeric vector with crossproducts of the X matrix
+#' @param xy matrix with X transpose Y products.
 #'
 xrsx_xrsy <- function(id_matrix, sets_rs, xx, xy){
   trait_labels <- colnames(id_matrix)[-ncol(id_matrix)]

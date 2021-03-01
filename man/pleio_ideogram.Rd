@@ -19,32 +19,31 @@ pleio_ideogram(
 )
 }
 \arguments{
-\item{pleio_res}{Object of class list that results of function pleio_test.}
+\item{pleio_res}{list returned by pleio_test().}
 
-\item{alpha}{either 'bonferroni05' or a numeric threshold for significance level.}
+\item{alpha}{numeric threshold for significance level (Bonferroni correction by default).}
 
-\item{n_traits}{integer indicating the number of traits to be tested (not needed if type = "t").}
+\item{n_traits}{integer indicating the level of pleiotropy to test (a.k.a. number of traits).}
 
-\item{bp_positions}{a data frame with column names 'chr' and 'pos' indicating the chromosome and position for each SNP. Row names must contain SNP names matching results from pleio_test.}
+\item{bp_positions}{dataframe with colnames 'chr' and 'pos' indicating the chromosome and position for each SNP. Rownames must contain SNP names matching results of pleio_test.}
 
-\item{window_size}{a numeric value indicating the size (in base pairs) of the genomic region that contains significant SNPs.}
+\item{window_size}{numeric value indicating the minimum size (in base pairs) of the genomic region that contains significant SNPs.}
 
-\item{centromeres}{(default NULL) take string 'human' or a dataframe/matrix with chromosome in the first column and position (in mbp) for the centromere in the second column.}
+\item{centromeres}{string 'human' or dataframe (or matrix) with chromosome and position (in mbp) of the centromeres in the first and second columns. If NULL (default) does not plot the centromeres.}
 
-\item{color_bias}{bias for the color scale. See colorRampPalette.}
+\item{color_bias}{number for bias of the color scale. See help(colorRampPalette). By default color_bias = 1}
 
-\item{set_plot}{(default TRUE) plot the ideogram.}
+\item{set_plot}{logical indicating whether to plot the ideogram (TRUE by default).}
 
-\item{set_legend}{(default TRUE) plot legend.}
+\item{set_legend}{logical indicating whether to plot a legend (TRUE by default).}
 
-\item{set_ylim_prop}{(default = 1) proportion of upper margin to fit the legend, 1 = no margin, 1.1 = 10% left for margin}
+\item{set_ylim_prop}{numeric proportion of upper margin to fit the legend (no margin by default). 1 = no margin, 1.1 = 10\% left for margin, etc.}
+
+\item{...}{more plot arguments.}
 }
 \description{
-Plots the p-values or number of hits with the positions in the genome using results of pleio_test.
+Plots genomic segments that contain significant pleiotropic SNPs using results of pleio_test(). It also returns a dataframe with segment information.
 }
 \seealso{
 \code{\link[pleio_plot]{pleio_plot}}
-}
-\author{
-Original code by Fernando Aguate.
 }

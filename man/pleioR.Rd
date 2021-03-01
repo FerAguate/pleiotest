@@ -2,23 +2,23 @@
 % Please edit documentation in R/pleioR.R
 \name{pleioR}
 \alias{pleioR}
-\title{Fit a multitrait model to test for genetic pleiotropy}
+\title{Fit a multi-trait model to test for genetic pleiotropy}
 \usage{
 pleioR(pheno, geno, i = NULL, j = NULL, covariates = NULL, drop_subsets = 10)
 }
 \arguments{
-\item{pheno}{A dataframe with phenotypic data with columns 'id', 'trait', and 'y'. The column 'y' contains the observations for the corresponding trait and id.}
+\item{pheno}{dataframe with phenotypic data. Must have columns 'id', 'trait', and 'y'. Column 'y' must contain the observations for the corresponding 'trait' and 'id'. See function melt() in the 'reshape2' package for a simple formatting of your data.}
 
-\item{geno}{a matrix like object with the variants in columns and IDs in row names.}
+\item{geno}{matrix with SNPs in columns and IDs in rownames. This can also be a memory-mapped matrix returned by BEDMatrix() in the 'BEDMatrix' package.}
 
-\item{i}{vector with integers indicating rows from geno to use in the model.}
+\item{i}{integers indexing rows from geno to use in the model.}
 
-\item{j}{vector with integers indicating columns from geno to use in the model.}
+\item{j}{integers indexing columns from geno to use in the model. Useful when working with multiple jobs in parallel.}
 
-\item{covariates}{(optional) a data frame or matrix containing covariates in columns and with IDs matching those in geno.}
+\item{covariates}{(optional) dataframe or matrix containing covariates in columns and IDs as rownames. These IDs must match those in geno.}
 
-\item{drop_subsets}{minimum sub-set sample size to consider for analysis.}
+\item{drop_subsets}{minimum sample size of sub-data sets to consider for analysis, 10 by default. When working with unbalanced data (a.k.a. fragmented data), save computation time by dropping small fragments of data.}
 }
 \description{
-The main function of the pleiotest package. Fits a seemingly unrelated regression with possible unbalanced data, and covariates. It returns a pleio_class object to use as argument of the pleio_test function.
+Fits a seemingly unrelated regression with, possibly unbalanced data, and/or covariates. It returns a pleio_class object to perform the sequential test with pleio_test() or to obtain by-trait estimates with mt_gwas().
 }

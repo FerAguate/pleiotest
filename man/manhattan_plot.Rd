@@ -7,17 +7,14 @@
 manhattan_plot(mt_gwas_results, trait, bp_positions, ...)
 }
 \arguments{
-\item{mt_gwas_results}{Results from function mt_gwas}
+\item{mt_gwas_results}{Object returned by mt_gwas}
 
-\item{trait}{integer number indicating the position of the trait to be plotted.}
+\item{trait}{integer indicating the position of the trait (see: names(mt_gwas_results)) to be plotted.}
 
-\item{bp_positions}{dataframe with SNPs basepair positions. colnames should be 'chr' and 'position', rownames should be SNP identifiers matching names in mt_gwas.}
+\item{bp_positions}{dataframe with SNPs base pair positions. colnames msut be 'chr' and 'position', rownames must be SNP identifiers matching names in mt_gwas.}
 
-\item{...}{Further graphical parameters to customize the plot. Options include: title, bty, pch, cex.lab and/or cex.main.}
+\item{...}{further graphical parameters. Options include: title=, bty=, pch=, cex.lab=, and cex.main=.}
 }
 \description{
-plots p-values with results from mt_gwas.
-}
-\author{
-Original code by Fernando Aguate.
+Manhattan plot of results from mt_gwas function.
 }
