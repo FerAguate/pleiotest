@@ -6,7 +6,7 @@
 #' @param j integers indexing columns from geno to use in the model. Useful when working with multiple jobs in parallel.
 #' @param covariates (optional) dataframe or matrix containing covariates in columns and IDs as rownames. These IDs must match those in geno.
 #' @param drop_subsets minimum sample size of sub-data sets to consider for analysis, 10 by default. When working with unbalanced data (a.k.a. fragmented data), save computation time by dropping small fragments of data.
-#'
+#' @export
 pleioR <- function(pheno, geno, i = NULL, j = NULL, covariates = NULL, drop_subsets = 10){
 
   if (is.null(rownames(geno)))

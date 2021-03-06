@@ -5,7 +5,7 @@
 #' @param n_snp number of SNPs to simulate.
 #' @param percentage_mv proportion of missing values. By default = 0.
 #' @author Original code by Fernando Aguate.
-#'
+#' @export
 pleio_simulate <- function(n_traits, n_individuals, n_snp, percentage_mv = 0){
   if (n_traits < 2) stop ('n_traits must be a number higher than 1')
   if (n_individuals < 5) stop ('n_individuals must be a number higher than 5')

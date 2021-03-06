@@ -18,8 +18,16 @@ pleio_test(
 
 \item{save_at}{character with directory and/or file name (.rdata) to save the results. This is useful when handling multiple results such as in parallel jobs.}
 
-\item{contrast_matrices}{user specified contrast matrices within a list. Each matrix must have the same number of columns equal to the number of traits. Contrast matrices can have names.}
+\item{contrast_matrices}{user-specified contrast matrices within a list of lists, or a single contrast matrix (see example). Each matrix must have the same number of columns, and must be equal to the number of traits.}
 }
 \description{
 Performs the sequential test of pleiotropic effects using results of pleioR().
+}
+\examples{
+# Example of user-specified contrast matrices with 3 traits
+cm1 <- matrix(c(-1, 0, 1), ncol = 3)
+cm2 <- matrix(c(0, -1, 1), ncol = 3)
+contrast_matrices <- list('1vs3' = list(cm1), '2vs3' = list(cm2))
+# or a single contrast matrix as:
+contrast_matrices <- cm1
 }

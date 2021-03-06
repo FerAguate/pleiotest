@@ -9,7 +9,7 @@
 #' @param set_plot logical indicating whether to return the manhattan plot (TRUE by default).
 #' @param chr_spacing integer indicating the spacing (in base pair positions) between chromosomes. 1e5 by default.
 #' @param ... additional graphic parameters for the plot.
-#'
+#' @export
 pleio_plot <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_positions = NULL, set_colors = NULL, set_text = NULL, set_plot = TRUE, chr_spacing = 1e5, ...){
   p_values <- apply(pleio_res[[1]][, 1:n_traits, drop = F], 1, max)
   p_values[p_values == 0] <- 1e-300

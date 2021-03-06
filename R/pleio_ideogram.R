@@ -12,7 +12,7 @@
 #' @param set_ylim_prop numeric proportion of upper margin to fit the legend (no margin by default). 1 = no margin, 1.1 = 10% left for margin, etc.
 #' @param ... more plot arguments.
 #' @seealso \code{\link[pleio_plot]{pleio_plot}}
-
+#' @export
 pleio_ideogram <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_positions, window_size = 1e6, centromeres = NULL, color_bias = 1, set_plot = T, set_legend = T, set_ylim_prop = 1.1, ...){
   loadNamespace(RColorBrewer)
 
