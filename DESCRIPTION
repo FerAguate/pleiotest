@@ -20,7 +20,7 @@ Authors@R: c(
 Description: It performs a fast multi-trait genome-wide association analysis based on seemingly unrelated regressions, and performs a test for pleiotropic effects based on a series of Intersection-Union Wald tests. The package offers some computational advantages that allows to handle large and unbalanced data, easy to interpret results, and plots.
 License: MIT + file LICENSE
 Encoding: UTF-8
-Imports: Rcpp
+Imports: Rcpp, RColorBrewer
 LinkingTo: Rcpp, RcppArmadillo
 LazyData: true
 Roxygen: list(markdown = TRUE)
