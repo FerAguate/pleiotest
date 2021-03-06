@@ -11,8 +11,8 @@ pleio_simulate <- function(n_traits, n_individuals, n_snp, percentage_mv = 0){
   if (n_individuals < 5) stop ('n_individuals must be a number higher than 5')
   if (percentage_mv < 0 | percentage_mv > 1) stop ('percentage_mv must be a number between 0 and 1')
 
-  y <- rnorm(n_traits * n_individuals)
-  x <- sapply(1:n_snp, function(i) rbinom(n_individuals, 2, runif(1, 0.01, .49)))
+  y <- stats::rnorm(n_traits * n_individuals)
+  x <- sapply(1:n_snp, function(i) stats::rbinom(n_individuals, 2, stats::runif(1, 0.01, .49)))
   rownames(x) <- paste0('ind', 1:n_individuals)
   colnames(x) <- paste0('snp', 1:ncol(x))
   trait <- rep(paste0('t', 1:n_traits), each = n_individuals)

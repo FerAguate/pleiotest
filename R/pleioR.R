@@ -16,7 +16,7 @@ pleioR <- function(pheno, geno, i = NULL, j = NULL, covariates = NULL, drop_subs
   if (class(pheno) == 'data.frame'){
     pheno <- as.list(pheno)
   } else {
-    if (var(sapply(pheno, length)) != 0)
+    if (stats::var(sapply(pheno, length)) != 0)
       stop('If pheno is a list: id, trait and y should have the same length')
   }
   names(pheno)[grep('id|Var1', names(pheno), ignore.case = T)] <- 'id'
@@ -76,10 +76,10 @@ pleioR <- function(pheno, geno, i = NULL, j = NULL, covariates = NULL, drop_subs
         cov_i <- apply(cov_i, 2, function(x){ x[is.na(x)] <- mean(x, na.rm = T) ; x})
         for (set_j in 1:ncol(sets_y[[set_i]])){
           y_tmp <- sets_y[[set_i]][, set_j]
-          sets_y[[set_i]][, set_j] <- y_tmp - predict(lm(y_tmp ~ cov_i), newdata = as.data.frame(cov_i))
+          sets_y[[set_i]][, set_j] <- y_tmp - stats::predict(stats::lm(y_tmp ~ cov_i), newdata = as.data.frame(cov_i))
         }
       }
-      sets_rs[[set_i]] <- solve(cov(sets_y[[set_i]], use = 'complete.obs'))
+      sets_rs[[set_i]] <- solve(stats::cov(sets_y[[set_i]], use = 'complete.obs'))
     } else {
       sets_rs[[set_i]] <- 0
       sets_y[[set_i]] <- 0

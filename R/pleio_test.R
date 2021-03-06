@@ -19,7 +19,7 @@ pleio_test <- function(pleio_results, loop_breaker = 1, save_at = NULL, contrast
   traits_names <- row.names(pleio_results[[1]]$betas)
   indices <- list()
   for (i in 1:(n_traits - 1))
-    indices[[length(indices) + 1]] <- combn(n_traits, i)
+    indices[[length(indices) + 1]] <- utils::combn(n_traits, i)
   if (is.null(contrast_matrices)) {
   contrast_matrices <- c(list(list(diag(n_traits))), lapply(indices, function(x)
     lapply(as.data.frame(x), function(w)
