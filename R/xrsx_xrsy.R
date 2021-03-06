@@ -4,7 +4,7 @@
 #' @param sets_rs list of inverses of matrix R
 #' @param xx numeric vector with crossproducts of the X matrix
 #' @param xy matrix with X transpose Y products.
-#'
+#' @export
 xrsx_xrsy <- function(id_matrix, sets_rs, xx, xy){
   trait_labels <- colnames(id_matrix)[-ncol(id_matrix)]
   xrsx <- diag(ncol(id_matrix) - 1)

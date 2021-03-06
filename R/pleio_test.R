@@ -11,6 +11,7 @@
 #' contrast_matrices <- list('1vs3' = list(cm1), '2vs3' = list(cm2))
 #' # or a single contrast matrix as:
 #' contrast_matrices <- cm1
+#' @export
 pleio_test <- function(pleio_results, loop_breaker = 1, save_at = NULL, contrast_matrices = NULL){
   if (!'pleio_class' %in% class(pleio_results))
     stop('pleio_results should be a pleio_class object')

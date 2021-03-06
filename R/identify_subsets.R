@@ -3,7 +3,7 @@
 #' @param trait character indicating traits.
 #' @param id character indicating IDs.
 #' @author Original code by Fernando Aguate.
-#'
+#' @export
 identify_subsets <- function(trait, id){
   trait <- as.character(trait)
   id <- as.character(id)
