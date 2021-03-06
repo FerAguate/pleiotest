@@ -45,5 +45,5 @@ pleio_ideogram(
 Plots genomic segments that contain significant pleiotropic SNPs using results of pleio_test(). It also returns a dataframe with segment information.
 }
 \seealso{
-\code{\link[pleio_plot]{pleio_plot}}
+\code{\link{pleio_plot}}
 }
