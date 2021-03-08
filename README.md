@@ -9,7 +9,7 @@ The package offers some computational advantages that allows it to handle large 
 **Figure 1** shows a schematic view of how the package is structured and how inputs, functions, and outputs are linked to each other on a conceptual pipeline. The main function pleioR() takes as input the phenotype (pheno) and genotype (geno) data, and possibly covariates (covariates). The results are returned in a list of class pleio_class. The pheno data consists of a dataframe that has IDs, traits, and observations arranged in columns. The geno data can be a numeric matrix or a memory-mapped matrix (e.g., a BEDMatrix object), with ID names in rows matching those in pheno. The package allows performing computations using subsets of the rows and columns in geno (see arguments i and j, for specifying rows and columns, respectively).
 The results produced by pleioR() can be processed either by the mt_gwas() function, which returns trait-specific SNP-effect estimates, SE, and p-values from the multi-trait model; or by the pleio_test() function, which performs the sequential test for pleiotropy using Wald's test, and returns its p-values indicating which traits are associated with a particular variant. Finally, the functions pleio_plot() and pleio_ideogram() can be used to plot the results of pleio_test() with many arguments dedicated to fine-tuning.
 
-![GitHub Logo](/images/Picture0.png)
+![](man/figures/Picture0.png)
 **Figure 1.** Overview of the main functions of pleiotest.
 
 Examples
@@ -213,7 +213,7 @@ pleio_plot(pleio_res = pleio_result4, n_traits = 2, alpha = .05, bp_positions = 
 ## rsid3299 0.034798696   1_2  21 2057431463
 ## rsid4663 0.045350685   2_3  21 2084716920
 ```
-![GitHub Logo](/images/Picture1.png)
+![](man/figures/Picture1.png)
 ```R
 # The function pleio_ideogram also returns a table with the plotted regions
 pleio_ideogram(pleio_res = pleio_result4, n_traits = 2, alpha = .05, bp_positions = bp_positions, window_size = 1e6, centromeres = centromeres, set_ylim_prop = 1.3)
@@ -231,4 +231,4 @@ pleio_ideogram(pleio_res = pleio_result4, n_traits = 2, alpha = .05, bp_position
 ## 11  21 64.652929 66.853370    1 0.034798696 rsid3299    1_2
 ## 12  21 91.938386 94.138826    1 0.045350685 rsid4663    2_3
 ```
-![GitHub Logo](/images/Picture2.png)
+![](man/figures/Picture2.png)
