@@ -17,7 +17,7 @@ manhattan_plot <- function(mt_gwas_results, trait, bp_positions, ...){
   result_trait <- result_trait[order(result_trait$chr, result_trait$position),]
   my_colors <- as.factor(result_trait$chr)
   levels(my_colors) <- rep(c('blue1', 'darkorange3'), length.out = 26)
-  plot(1:nrow(result_trait), -log10(result_trait$`p value`), col = as.character(my_colors),
+  graphics::plot(1:nrow(result_trait), -log10(result_trait$`p value`), col = as.character(my_colors),
        cex = .8, xaxt = 'n', xlab = 'chromosome', ylab = '-log10(p value)', ...)
   x_axis <- stats::aggregate(1:nrow(result_trait) ~ result_trait$chr, FUN = function(x) round(mean(x)))
   graphics::axis(1, x_axis[,2], x_axis[,1])

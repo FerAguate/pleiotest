@@ -112,7 +112,7 @@ pleio_ideogram <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_p
     xlims <- c(min(data1$chr), max(data1$chr))
     ylims <- c(0, max(data1$pos / 1e6) * set_ylim_prop)
 
-    plot(1, type = "n", xlab = "Chromosome", ylab = "Positions (Mbp)", xlim = xlims, ylim = ylims, bty = "n", xaxt = 'n', ...)
+    graphics::plot(1, type = "n", xlab = "Chromosome", ylab = "Positions (Mbp)", xlim = xlims, ylim = ylims, bty = "n", xaxt = 'n', ...)
     graphics::axis(1, seq(xlims[1],xlims[2], 1))
     viridis <- c('#440154FF', '#482677FF', '#404788FF', '#33638DFF', '#287D8EFF', '#1F968BFF', '#29AF7FFF', '#55C667FF', '#95D840FF', '#DCE319FF', '#FDE725FF')
     colfunc <- grDevices::colorRampPalette(viridis, bias = color_bias)
