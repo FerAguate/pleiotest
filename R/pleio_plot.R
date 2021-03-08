@@ -104,7 +104,7 @@ pleio_plot <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_posit
   }
 
   if (set_plot){
-    plot(NULL, cex = .5,
+    graphics::plot(NULL, cex = .5,
          xlim = c(0, pos_max), ylim = c(0, ceiling(-log10(min(p_values, na.rm = T)))),
          ylab = paste0('-log10(p value)'), xlab = x_lab,
          main = paste0('Testing for association with ', n_traits, ' traits'), xaxt = 'n', ...)
