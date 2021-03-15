@@ -11,6 +11,9 @@ identify_subsets(trait, id)
 
 \item{id}{character indicating IDs.}
 }
+\value{
+list with an ID matrix and ID subsets.
+}
 \description{
 This function is used internally in pleioR.
 }

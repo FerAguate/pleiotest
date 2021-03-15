@@ -19,6 +19,8 @@ pleio_test(
 \item{save_at}{character with directory and/or file name (.rdata) to save the results. This is useful when handling multiple results such as in parallel jobs.}
 
 \item{contrast_matrices}{user-specified contrast matrices within a list of lists, or a single contrast matrix (see example). Each matrix must have the same number of columns, and must be equal to the number of traits.}
+\value{
+list of p-values, indices, and trait numeric identifier.
 }
 \description{
 Performs the sequential test of pleiotropic effects using results of pleioR().

@@ -4,6 +4,7 @@
 #' @param loop_breaker numeric value for a maximum p-value used to stop the sequence if a higher p-value is obtained. This saves computation time if there are many tests to perform.
 #' @param save_at character with directory and/or file name (.rdata) to save the results. This is useful when handling multiple results such as in parallel jobs.
 #' @param contrast_matrices user-specified contrast matrices within a list of lists, or a single contrast matrix (see example). Each matrix must have the same number of columns, and must be equal to the number of traits.
+#' @return list of p-values, indices, and trait numeric identifier.
 #' @examples
 #' # Example of user-specified contrast matrices with 3 traits
 #' cm1 <- matrix(c(-1, 0, 1), ncol = 3)

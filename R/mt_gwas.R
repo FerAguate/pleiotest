@@ -2,6 +2,7 @@
 #' @description Performs a multi-trait model with correlated errors (seemingly unrelated regressions), and generates results by trait in a list.
 #' @param pleio_results object of class pleio_class (returned by pleioR() function).
 #' @param save_at character with directory and/or file name (.rdata) to save the results. This is useful when handling multiple results such as in parallel jobs.
+#' @return list with by trait dataframes that contain results of the multi-trait model.
 #' @export
 mt_gwas <- function(pleio_results, save_at = NULL){
   if (!'pleio_class' %in% class(pleio_results))

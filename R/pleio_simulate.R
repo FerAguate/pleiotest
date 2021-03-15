@@ -4,6 +4,9 @@
 #' @param n_individuals number of individuals to simulate.
 #' @param n_snp number of SNPs to simulate.
 #' @param percentage_mv proportion of missing values. By default = 0.
+#' @return a list with pheno and geno to test the pleioR function.
+#' @examples
+#' sim1 <- pleio_simulate(n_traits = 3, n_individuals = 1e4, n_snp = 1e3, percentage_mv = 0.1)
 #' @author Original code by Fernando Aguate.
 #' @export
 pleio_simulate <- function(n_traits, n_individuals, n_snp, percentage_mv = 0){

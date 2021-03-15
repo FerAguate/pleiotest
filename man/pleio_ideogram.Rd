@@ -41,6 +41,9 @@ pleio_ideogram(
 
 \item{...}{more plot arguments.}
 }
+\value{
+Ideogram plot and a dataframe with genomic segments information.
+}
 \description{
 Plots genomic segments that contain significant pleiotropic SNPs using results of pleio_test(). It also returns a dataframe with segment information.
 }

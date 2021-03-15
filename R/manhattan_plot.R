@@ -4,6 +4,7 @@
 #' @param trait integer indicating the position of the trait (see: names(mt_gwas_results)) to be plotted.
 #' @param bp_positions dataframe with SNPs base pair positions. colnames msut be 'chr' and 'position', rownames must be SNP identifiers matching names in mt_gwas.
 #' @param ... further graphical parameters. Options include: title=, bty=, pch=, cex.lab=, and cex.main=.
+#' @return Manhattan plot
 #' @export
 manhattan_plot <- function(mt_gwas_results, trait, bp_positions, ...){
   colnames(bp_positions) <- c('chr', 'position')

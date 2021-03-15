@@ -15,6 +15,9 @@ manhattan_plot(mt_gwas_results, trait, bp_positions, ...)
 
 \item{...}{further graphical parameters. Options include: title=, bty=, pch=, cex.lab=, and cex.main=.}
 }
+\value{
+Manhattan plot
+}
 \description{
 Manhattan plot of results from mt_gwas function.
 }

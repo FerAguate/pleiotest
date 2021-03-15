@@ -19,6 +19,15 @@ pleioR(pheno, geno, i = NULL, j = NULL, covariates = NULL, drop_subsets = 10)
 
 \item{drop_subsets}{minimum sample size of sub-data sets to consider for analysis, 10 by default. When working with unbalanced data (a.k.a. fragmented data), save computation time by dropping small fragments of data.}
 }
+\value{
+pleio_class list of left and right hand side solutions of the model.
+}
 \description{
 Fits a seemingly unrelated regression with, possibly unbalanced data, and/or covariates. It returns a pleio_class object to perform the sequential test with pleio_test() or to obtain by-trait estimates with mt_gwas().
+}
+\examples{
+# Random generated example with 3 traits, 1e4 individuals, 1000 SNPs and 10\% missing values.
+sim1 <- pleio_simulate(n_traits = 3, n_individuals = 1e4, n_snp = 1e3, percentage_mv = 0.1)
+pleio_model <- pleioR(pheno = sim1$pheno, geno = sim1$geno)
+pleio_model_test <- pleio_test(pleio_model)
 }

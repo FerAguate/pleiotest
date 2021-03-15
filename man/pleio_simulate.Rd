@@ -15,8 +15,14 @@ pleio_simulate(n_traits, n_individuals, n_snp, percentage_mv = 0)
 
 \item{percentage_mv}{proportion of missing values. By default = 0.}
 }
+\value{
+a list with pheno and geno to test the pleioR function.
+}
 \description{
 Example function to create simulations with no effects.
+}
+\examples{
+sim1 <- pleio_simulate(n_traits = 3, n_individuals = 1e4, n_snp = 1e3, percentage_mv = 0.1)
 }
 \author{
 Original code by Fernando Aguate.

@@ -35,6 +35,9 @@ pleio_plot(
 
 \item{...}{additional graphic parameters for the plot.}
 }
+\value{
+Manhattan plot and dataframe with information related to significant SNPs.
+}
 \description{
 Plots the p-values that test the hypothesis of pleiotropic effects on n_traits. This function also returns a dataframe with information of the significant SNPs.
 }

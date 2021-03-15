@@ -8,6 +8,7 @@
 #' @param set_text dataframe or matrix with strings to add as text to identify SNPs or genes. Rownames must be SNP names matching results of pleio_test. The first column of the dataframe must have strings to plot as text.
 #' @param set_plot logical indicating whether to return the manhattan plot (TRUE by default).
 #' @param chr_spacing integer indicating the spacing (in base pair positions) between chromosomes. 1e5 by default.
+#' @return Manhattan plot and dataframe with information related to significant SNPs.
 #' @param ... additional graphic parameters for the plot.
 #' @export
 pleio_plot <- function(pleio_res, alpha = 'bonferroni05', n_traits = 2, bp_positions = NULL, set_colors = NULL, set_text = NULL, set_plot = TRUE, chr_spacing = 1e5, ...){

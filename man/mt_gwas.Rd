@@ -11,6 +11,9 @@ mt_gwas(pleio_results, save_at = NULL)
 
 \item{save_at}{character with directory and/or file name (.rdata) to save the results. This is useful when handling multiple results such as in parallel jobs.}
 }
+\value{
+list with by trait dataframes that contain results of the multi-trait model.
+}
 \description{
 Performs a multi-trait model with correlated errors (seemingly unrelated regressions), and generates results by trait in a list.
 }
