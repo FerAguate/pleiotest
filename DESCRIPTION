@@ -22,6 +22,7 @@ License: MIT + file LICENSE
 Depends: R (>= 2.10)
 Imports: Rcpp, RColorBrewer
 LinkingTo: Rcpp, RcppArmadillo
+URL: https://github.com/FerAguate/pleiotest
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Encoding: UTF-8
