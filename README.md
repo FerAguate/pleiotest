@@ -115,6 +115,14 @@ mt_result2 <- mt_gwas(pleio_object2, save_at = '~/Documents/')
 # This creates a file named mt_gwas_result_x.rdata
 file.exists('~/Documents/mt_gwas_result_1.rdata')
 ## [1] TRUE
+# Use the c function to join jobs coming from different runs
+pleio_j1 <- pleioR(pheno = pheno_m, geno = geno, j = 1:10)
+pleio_j2 <- pleioR(pheno = pheno_m, geno = geno, j = 11:20)
+pleio_j <- c(pleio_j1, pleio_j2)
+# The class of the resulting object needs to be redefine
+class(pleio_j) <- 'pleio_class'
+# The joint results are ready for the sequential test now:
+x <- pleio_test(pleio_j)
 ```
 
 ```R
