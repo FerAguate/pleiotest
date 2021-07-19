@@ -1,3 +1,6 @@
+![](https://cranlogs.r-pkg.org/badges/grand-total/pleiotest)
+![](http://cranlogs.r-pkg.org/badges/pleiotest?color=blue)
+
 Pleiotest: A Multi-trait analysis and sequential test for detecting genetic pleiotropy
 ======================================================================================
 
