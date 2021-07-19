@@ -1,3 +1,6 @@
+![](https://www.r-pkg.org/badges/version/pleiotest?color=green)
+![](https://cranchecks.info/badges/worst/pleiotest)
+![](https://travis-ci.com/FerAguate/pleiotest.svg?branch=master)
 ![](https://cranlogs.r-pkg.org/badges/grand-total/pleiotest)
 ![](http://cranlogs.r-pkg.org/badges/pleiotest?color=blue)
 
