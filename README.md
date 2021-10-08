@@ -34,6 +34,7 @@ library(pleiotest)
 ```
 
 This code creates a toy example of balanced data to test the functions
+
 IMPORTANT: Always code you geno data as 0 = most frequent allele, 1 = heterozygous, 2 = minor allele
 
 ```R
