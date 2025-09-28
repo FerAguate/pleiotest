@@ -1,6 +1,6 @@
 Package: pleiotest
 Title: Fast Sequential Pleiotropy Test
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: c(
     person(given = "Fernando",
            family = "Aguate",
