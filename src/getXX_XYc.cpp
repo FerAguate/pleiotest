@@ -1,3 +1,4 @@
+#include <cmath>
 #include <Rmath.h>
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -23,7 +24,7 @@ List getXX_XYc(IntegerVector x, List xrows_bags, List y_bags, IntegerMatrix N, L
     IntegerVector n2(ntr);
     int n = 0;
     for (int j = 0; j < x_i.size(); j++){
-      if(arma::is_finite(x_i[j])){
+      if(std::isfinite(x_i[j])){
         n++;
         for (int k1 = 0; k1 < y_i.ncol(); k1++){
           n2[k1] += 1;
@@ -49,7 +50,7 @@ List getXX_XYc(IntegerVector x, List xrows_bags, List y_bags, IntegerMatrix N, L
     }
     for (int k4 = 0; k4 < ntr; k4++){
       double res = xty[k4] - (xt2[k4] * yt1[k4]) / n2[k4];
-      if(arma::is_finite(res)){
+      if(std::isfinite(res)){
         xy(i, trait_i[k4]) = res;
 
       }
